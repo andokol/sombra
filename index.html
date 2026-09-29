@@ -85,6 +85,9 @@ main{flex:1; padding:0 16px 130px}
   transition:transform .2s var(--spring);
 }
 .chip b{font-variant-numeric:tabular-nums}
+.ic{display:block; flex:0 0 auto}
+.icrow{display:inline-flex; align-items:center; gap:7px}
+.chip .ic,.btn .ic,.row .ic{display:inline-block; vertical-align:-3px}
 .chip.pop{animation:chippop .45s var(--spring)}
 @keyframes chippop{0%{transform:scale(1)}45%{transform:scale(1.28)}100%{transform:scale(1)}}
 .chip.gold{color:var(--gold); box-shadow:0 0 16px rgba(255,201,60,.22) inset}
@@ -206,7 +209,8 @@ main{flex:1; padding:0 16px 130px}
 .worldhead .num{font-family:var(--fd); font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--uc); font-weight:600}
 .worldhead h2{font-size:20px; line-height:1.15}
 .worldhead p{margin:2px 0 0; font-size:13px; color:var(--muted)}
-.crowns{font-family:var(--fd); font-size:14px; color:var(--gold); white-space:nowrap}
+.crowns{font-family:var(--fd); font-size:14px; color:var(--gold); white-space:nowrap; display:flex; align-items:center; gap:5px}
+.node .cr{display:flex; gap:1px; color:var(--gold); align-items:center}
 
 .path{position:relative; padding:14px 0 6px}
 .noderow{display:flex; align-items:center; justify-content:center; min-height:74px; position:relative}
@@ -239,9 +243,11 @@ main{flex:1; padding:0 16px 130px}
 .pbar{height:16px; border-radius:999px; background:rgba(0,0,0,.5); border:1px solid var(--edge); overflow:hidden; flex:1; position:relative}
 .pbar i{display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--lime),var(--cyan)); transition:width .45s var(--spring); position:relative}
 .pbar i:after{content:""; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%); animation:sheen 2.2s linear infinite}
-.hearts{display:flex; gap:1px; font-size:17px}
+.hearts{display:flex; gap:3px; color:var(--pink)}
+.hearts .ic{filter:drop-shadow(0 0 6px rgba(255,77,141,.5))}
 .heart{transition:transform .3s var(--spring), filter .3s, opacity .3s}
-.heart.gone{filter:grayscale(1) brightness(.5); opacity:.35; transform:scale(.8)}
+.heart.gone{color:var(--muted); opacity:.3; transform:scale(.82)}
+.heart.gone .ic{filter:none}
 .heart.breaking{animation:heartbreak .55s ease forwards}
 @keyframes heartbreak{0%{transform:scale(1.5)}40%{transform:scale(.7) rotate(-16deg)}100%{transform:scale(.8); filter:grayscale(1) brightness(.5); opacity:.35}}
 
@@ -278,7 +284,9 @@ main{flex:1; padding:0 16px 130px}
 @keyframes nowobble{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
 .opt.dim{opacity:.28}
 .opt.big{justify-content:center; font-size:46px; padding:22px 0; aspect-ratio:1.22}
-.opt.tf{justify-content:center; font-size:19px; padding:22px 0; font-family:var(--fd)}
+.opt.tf{justify-content:center; gap:9px; font-size:19px; padding:22px 0; font-family:var(--fd)}
+.opt.tf:first-child{color:var(--lime)} .opt.tf:last-child{color:var(--pink)}
+.opt.tf span{color:var(--ink)}
 
 .speakbig{
   width:100%; padding:30px; border-radius:var(--r); border:2px solid var(--edge); cursor:pointer;
@@ -335,7 +343,7 @@ main{flex:1; padding:0 16px 130px}
 .combobox.on{opacity:1}
 .combometer{flex:1; height:9px; border-radius:999px; background:rgba(0,0,0,.45); overflow:hidden; border:1px solid var(--edge)}
 .combometer i{display:block; height:100%; background:linear-gradient(90deg,var(--gold),var(--orange),var(--pink)); transition:width .4s var(--spring)}
-.combolabel{font-family:var(--fd); font-size:14px; color:var(--orange); white-space:nowrap}
+.combolabel{font-family:var(--fd); font-size:14px; color:var(--orange); white-space:nowrap; display:flex; align-items:center; gap:5px}
 .combobox.hot .combolabel{color:var(--pink); animation:hotpulse .8s ease-in-out infinite}
 @keyframes hotpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 
@@ -397,17 +405,20 @@ main{flex:1; padding:0 16px 130px}
 .row .g{flex:1; min-width:0}
 .row .g b{font-family:var(--fd); font-size:17px; display:block}
 .row .g span{font-size:13px; color:var(--muted)}
+.leaves{display:flex; gap:3px}
+.leaves .on{color:var(--lime)}
+.leaves .off{color:var(--muted); opacity:.4}
 .secttitle{font-family:var(--fd); font-size:12px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); margin:24px 0 10px}
 .badges{display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:11px}
 .bdg{text-align:center; border:1px solid var(--edge); border-radius:var(--r); padding:14px 8px; background:var(--panel)}
-.bdg .e{font-size:32px; display:block; filter:grayscale(1); opacity:.25}
+.bdg .e{display:flex; justify-content:center; opacity:.3}
 .bdg.won{border-color:var(--gold); background:rgba(255,201,60,.12); box-shadow:0 0 24px rgba(255,201,60,.18)}
-.bdg.won .e{filter:none; opacity:1}
+.bdg.won .e{opacity:1}
 .bdg b{display:block; font-family:var(--fd); font-size:13px; margin-top:6px}
 .bdg span{font-size:11px; color:var(--muted); line-height:1.25; display:block}
 .hats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
 .hatcard{text-align:center; border:2px solid var(--edge2); border-radius:var(--r); padding:13px 6px; background:var(--panel); cursor:pointer}
-.hatcard .e{font-size:34px; display:block}
+.hatcard .e{display:flex; justify-content:center; min-height:36px; align-items:center}
 .hatcard b{display:block; font-family:var(--fd); font-size:13px; margin-top:5px}
 .hatcard small{font-size:12px; color:var(--gold)}
 .hatcard.owned{border-color:var(--edge2)}
@@ -501,55 +512,123 @@ textarea{
 
 /* ===================== data ===================== */
 var UNITS=[
- {n:1,key:'greetings',t:"Hello, Sombra!",s:"Say hi, thanks and goodbye",e:"\u{1F44B}",c:"#FFC93C"},
- {n:2,key:'numbers',t:"Numbers & Colors",s:"Count to twenty, name every colour",e:"\u{1F3A8}",c:"#FF4D8D"},
- {n:3,key:'family',t:"My Family",s:"Mum, dad, brothers and sisters",e:"\u{1F46A}",c:"#4FEE9B"},
- {n:4,key:'animals',t:"Animal Friends",s:"Cats, dogs and one huge elephant",e:"\u{1F431}",c:"#47E0FF"},
- {n:5,key:'food',t:"Yum! Food & Drink",s:"Pizza, ice cream, milk and fruit",e:"\u{1F355}",c:"#B07BFF"},
- {n:6,key:'school',t:"At School",s:"Books, pencils and homework",e:"\u{1F392}",c:"#FF8A3D"},
- {n:7,key:'house',t:"My House",s:"Rooms, doors and the comfy sofa",e:"\u{1F3E0}",c:"#FFC93C"},
- {n:8,key:'body',t:"Body & Feelings",s:"Happy, tired, and where it hurts",e:"\u{1F63A}",c:"#FF4D8D"},
- {n:9,key:'clothes',t:"Clothes & Weather",s:"Rain, snow, shoes and scarves",e:"\u{1F9E2}",c:"#4FEE9B"},
- {n:10,key:'actions',t:"Things I Do",s:"Run, jump, swim, play and sing",e:"⚽",c:"#47E0FF"},
- {n:11,key:'places',t:"Out and About",s:"Parks, shops, buses and beaches",e:"\u{1F68C}",c:"#B07BFF"},
- {n:12,key:'time',t:"Days & Fun",s:"Days of the week, birthdays, games",e:"\u{1F389}",c:"#FF8A3D"},
- {n:13,key:'gaming',t:"Block Builders",s:"Mine, build, and survive the night",e:"⛏️",c:"#4FEE9B",bonus:1},
- {n:14,key:'online',t:"Squad Up",s:"Matches, teams, wins, one more round",e:"\u{1F3AE}",c:"#47E0FF",bonus:1},
- {n:15,key:'music',t:"Turn It Up",s:"Guitars, drums and your favourite song",e:"\u{1F3B8}",c:"#B07BFF",bonus:1},
- {n:16,key:'drama',t:"On Stage",s:"Lines, nerves and the big applause",e:"\u{1F3AD}",c:"#FF4D8D",bonus:1}
+ {n:1,key:'greetings',ico:"wave",t:"Hello, Sombra!",s:"Say hi, thanks and goodbye",e:"\u{1F44B}",c:"#FFC93C"},
+ {n:2,key:'numbers',ico:"palette",t:"Numbers & Colors",s:"Count to twenty, name every colour",e:"\u{1F3A8}",c:"#FF4D8D"},
+ {n:3,key:'family',ico:"family",t:"My Family",s:"Mum, dad, brothers and sisters",e:"\u{1F46A}",c:"#4FEE9B"},
+ {n:4,key:'animals',ico:"cat",t:"Animal Friends",s:"Cats, dogs and one huge elephant",e:"\u{1F431}",c:"#47E0FF"},
+ {n:5,key:'food',ico:"pizza",t:"Yum! Food & Drink",s:"Pizza, ice cream, milk and fruit",e:"\u{1F355}",c:"#B07BFF"},
+ {n:6,key:'school',ico:"backpack",t:"At School",s:"Books, pencils and homework",e:"\u{1F392}",c:"#FF8A3D"},
+ {n:7,key:'house',ico:"house",t:"My House",s:"Rooms, doors and the comfy sofa",e:"\u{1F3E0}",c:"#FFC93C"},
+ {n:8,key:'body',ico:"face",t:"Body & Feelings",s:"Happy, tired, and where it hurts",e:"\u{1F63A}",c:"#FF4D8D"},
+ {n:9,key:'clothes',ico:"weather",t:"Clothes & Weather",s:"Rain, snow, shoes and scarves",e:"\u{1F9E2}",c:"#4FEE9B"},
+ {n:10,key:'actions',ico:"run",t:"Things I Do",s:"Run, jump, swim, play and sing",e:"⚽",c:"#47E0FF"},
+ {n:11,key:'places',ico:"bus",t:"Out and About",s:"Parks, shops, buses and beaches",e:"\u{1F68C}",c:"#B07BFF"},
+ {n:12,key:'time',ico:"calendar",t:"Days & Fun",s:"Days of the week, birthdays, games",e:"\u{1F389}",c:"#FF8A3D"},
+ {n:13,key:'gaming',ico:"cube",t:"Block Builders",s:"Mine, build, and survive the night",e:"⛏️",c:"#4FEE9B",bonus:1},
+ {n:14,key:'online',ico:"gamepad",t:"Squad Up",s:"Matches, teams, wins, one more round",e:"\u{1F3AE}",c:"#47E0FF",bonus:1},
+ {n:15,key:'music',ico:"music",t:"Turn It Up",s:"Guitars, drums and your favourite song",e:"\u{1F3B8}",c:"#B07BFF",bonus:1},
+ {n:16,key:'drama',ico:"masks",t:"On Stage",s:"Lines, nerves and the big applause",e:"\u{1F3AD}",c:"#FF4D8D",bonus:1}
 ];
 var RANKS=["Gatito","Curioso","Explorador","Aventurero","Valiente","Listo","Experto","Maestro","Campeón","Leyenda"];
 var BADGES=[
- {id:'first',e:"\u{1F43E}",t:"First Paw",d:"Finish your first lesson"},
- {id:'perfect',e:"⭐",t:"Perfecto",d:"A lesson with no mistakes"},
- {id:'perfect10',e:"\u{1F31F}",t:"Ten Perfect",d:"10 perfect lessons"},
- {id:'streak3',e:"\u{1F525}",t:"Three Days",d:"3-day streak"},
- {id:'streak7',e:"\u{1F31E}",t:"One Week",d:"7-day streak"},
- {id:'xp500',e:"\u{1F4AF}",t:"500 XP",d:"Earn 500 XP"},
- {id:'xp2000',e:"\u{1F3C6}",t:"2000 XP",d:"Earn 2000 XP"},
- {id:'w25',e:"\u{1F4D4}",t:"25 Words",d:"25 words collected"},
- {id:'w100',e:"\u{1F4DA}",t:"100 Words",d:"100 words collected"},
- {id:'w300',e:"\u{1F9E0}",t:"300 Words",d:"300 words collected"},
- {id:'combo10',e:"⚡",t:"Combo 10",d:"10 right in a row"},
- {id:'combo25',e:"\u{1F4A5}",t:"Combo 25",d:"25 right in a row"},
- {id:'boss',e:"\u{1F451}",t:"Challenger",d:"Beat a Sombra's Challenge"},
- {id:'unit1',e:"\u{1F947}",t:"Unit Done",d:"Finish a whole unit"},
- {id:'unit6',e:"\u{1F680}",t:"Halfway",d:"Finish 6 units"},
- {id:'unit12',e:"\u{1F30D}",t:"All Twelve",d:"Finish twelve units"},
- {id:'fun',e:"\u{1F579}️",t:"Fun Zone",d:"Finish a Fun Zone unit"},
- {id:'ears',e:"\u{1F3A7}",t:"Good Ears",d:"50 listening questions right"},
- {id:'pen',e:"✍️",t:"Good Speller",d:"50 typing questions right"},
- {id:'dressed',e:"\u{1F9E2}",t:"Dressed Up",d:"Give Sombra a hat"}
+ {id:'first',ico:"paw",col:"#4FEE9B",t:"First Paw",d:"Finish your first lesson"},
+ {id:'perfect',ico:"star",col:"#FFC93C",t:"Perfecto",d:"A lesson with no mistakes"},
+ {id:'perfect10',ico:"sparkle",col:"#FFC93C",t:"Ten Perfect",d:"10 perfect lessons"},
+ {id:'streak3',ico:"flame",col:"#FF4D8D",t:"Three Days",d:"3-day streak"},
+ {id:'streak7',ico:"sun",col:"#FF8A3D",t:"One Week",d:"7-day streak"},
+ {id:'xp500',ico:"hundred",col:"#47E0FF",t:"500 XP",d:"Earn 500 XP"},
+ {id:'xp2000',ico:"trophy",col:"#FFC93C",t:"2000 XP",d:"Earn 2000 XP"},
+ {id:'w25',ico:"book",col:"#4FEE9B",t:"25 Words",d:"25 words collected"},
+ {id:'w100',ico:"books",col:"#4FEE9B",t:"100 Words",d:"100 words collected"},
+ {id:'w300',ico:"brain",col:"#B07BFF",t:"300 Words",d:"300 words collected"},
+ {id:'combo10',ico:"bolt",col:"#FFC93C",t:"Combo 10",d:"10 right in a row"},
+ {id:'combo25',ico:"burst",col:"#FF4D8D",t:"Combo 25",d:"25 right in a row"},
+ {id:'boss',ico:"crown",col:"#FFC93C",t:"Challenger",d:"Beat a Sombra's Challenge"},
+ {id:'unit1',ico:"medal",col:"#FFC93C",t:"Unit Done",d:"Finish a whole unit"},
+ {id:'unit6',ico:"rocket",col:"#47E0FF",t:"Halfway",d:"Finish 6 units"},
+ {id:'unit12',ico:"globe",col:"#4FEE9B",t:"All Twelve",d:"Finish twelve units"},
+ {id:'fun',ico:"gamepad",col:"#B07BFF",t:"Fun Zone",d:"Finish a Fun Zone unit"},
+ {id:'ears',ico:"headset",col:"#47E0FF",t:"Good Ears",d:"50 listening questions right"},
+ {id:'pen',ico:"pen",col:"#FF8A3D",t:"Good Speller",d:"50 typing questions right"},
+ {id:'dressed',ico:"crown",col:"#FF4D8D",t:"Dressed Up",d:"Give Sombra a hat"}
 ];
 var HATS=[
- {id:'cap',e:"\u{1F9E2}",t:"Gorra",cost:40},
- {id:'phones',e:"\u{1F3A7}",t:"Auriculares",cost:70},
- {id:'helmet',e:"⛑️",t:"Casco",cost:100},
- {id:'tophat',e:"\u{1F3A9}",t:"Sombrero",cost:140},
- {id:'grad',e:"\u{1F393}",t:"Graduado",cost:200},
- {id:'crown',e:"\u{1F451}",t:"Corona",cost:300}
+ {id:'cap',t:"Gorra",cost:40,svg:'<path d="M18 44C18 25 32 12 50 12s32 13 32 32z" fill="#FF4D8D"/><path d="M50 12c5 0 9 8 9 20H41c0-12 4-20 9-20z" fill="#FF8FB4"/><path d="M60 38h28c5 0 7 3 7 7H58z" fill="#C42D63"/>'},
+ {id:'phones',t:"Auriculares",cost:70,svg:'<path d="M16 48V34a34 34 0 0 1 68 0v14h-10V34a24 24 0 0 0-48 0v14z" fill="#47E0FF"/><rect x="6" y="40" width="19" height="22" rx="9" fill="#1A8FA8"/><rect x="75" y="40" width="19" height="22" rx="9" fill="#1A8FA8"/>'},
+ {id:'helmet',t:"Casco",cost:100,svg:'<path d="M14 48C14 26 30 10 50 10s36 16 36 38z" fill="#FF8A3D"/><path d="M46 12h8v36h-8z" fill="#FFD3AC"/><rect x="8" y="44" width="84" height="12" rx="6" fill="#B85512"/>'},
+ {id:'tophat',t:"Sombrero",cost:140,svg:'<rect x="30" y="2" width="40" height="42" rx="4" fill="#2A1E4C"/><rect x="30" y="30" width="40" height="10" fill="#FF4D8D"/><rect x="10" y="42" width="80" height="11" rx="5.5" fill="#150F2B"/>'},
+ {id:'grad',t:"Graduado",cost:200,svg:'<path d="M50 8 97 28 50 48 3 28z" fill="#2A1E4C"/><path d="M22 34v13c0 6 13 10 28 10s28-4 28-10V34L50 46z" fill="#3E2E66"/><path d="M92 30v19" stroke="#FFC93C" stroke-width="4" fill="none"/><circle cx="92" cy="52" r="5" fill="#FFC93C"/>'},
+ {id:'crown',t:"Corona",cost:300,svg:'<path d="M16 46 8 11l21 14L50 3l21 22 21-14-8 35z" fill="#FFC93C"/><rect x="16" y="43" width="68" height="11" rx="4" fill="#DFA200"/><circle cx="50" cy="19" r="5.5" fill="#FF4D8D"/>'}
 ];
-var LPU=5, QPL=15, BOSSQ=15;
+var LPU=5, QPL=10, BOSSQ=11;
+
+/* ===================== icon set (hand-drawn, no emoji) ===================== */
+var ICONS={
+bolt:'M13.4 2 5 13.8h5.3L9.6 22 19 10.1h-5.5z',
+flame:'M12 2c3.6 4.1 6.2 6.7 6.2 10.2a6.2 6.2 0 0 1-12.4 0c0-2.1 1-3.7 2.5-5.4.5 2 .6 3.2 1.7 4.2.5-3.6 1-6.2 2-9z',
+fish:'M2.4 12c3.3-4.3 7.5-6.4 11.4-6.4 2.7 0 4.8 1.1 6.2 2.8l3.4-2.7v12.6l-3.4-2.7c-1.4 1.7-3.5 2.8-6.2 2.8-3.9 0-8.1-2.1-11.4-6.4zm12.1-1.4a1.35 1.35 0 1 0 0 2.7 1.35 1.35 0 0 0 0-2.7z',
+crown:'M3 8.2 7.4 12 12 3.6 16.6 12 21 8.2 19.3 19H4.7zM5.2 21h13.6v2H5.2z',
+heart:'M12 21.2S3.4 15.3 3.4 9.4a4.9 4.9 0 0 1 8.6-3.2 4.9 4.9 0 0 1 8.6 3.2c0 5.9-8.6 11.8-8.6 11.8z',
+star:'M12 2.4l2.9 6.1 6.7.9-4.9 4.7 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6L2.4 9.4l6.7-.9z',
+sparkle:'M12 1.8l1.9 6.4 6.4 1.9-6.4 1.9L12 18.4l-1.9-6.4L3.7 10l6.4-1.9zM19.5 15l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z',
+paw:'M12 13.4c2.7 0 5.1 2 5.1 4.3 0 1.7-1.3 2.9-3 2.9-.9 0-1.5-.3-2.1-.3s-1.2.3-2.1.3c-1.7 0-3-1.2-3-2.9 0-2.3 2.4-4.3 5.1-4.3zM6.4 7.5c1.2 0 2.1 1.3 2.1 2.8s-.9 2.8-2.1 2.8-2.1-1.3-2.1-2.8S5.2 7.5 6.4 7.5zm11.2 0c1.2 0 2.1 1.3 2.1 2.8s-.9 2.8-2.1 2.8-2.1-1.3-2.1-2.8.9-2.8 2.1-2.8zM9.5 2.7c1.2 0 2.1 1.3 2.1 2.8S10.7 8.3 9.5 8.3 7.4 7 7.4 5.5s.9-2.8 2.1-2.8zm5 0c1.2 0 2.1 1.3 2.1 2.8s-.9 2.8-2.1 2.8-2.1-1.3-2.1-2.8.9-2.8 2.1-2.8z',
+play:'M7 4.2 19.4 12 7 19.8z',
+medal:'M7.4 2h3.1l1.5 3.6L13.5 2h3.1l-2.4 5.6 1.6.9-1.4 1.6h-4.8L8.2 8.5l1.6-.9zM12 9.6a6.2 6.2 0 1 1 0 12.4 6.2 6.2 0 0 1 0-12.4zm0 2.6-1 2.1-2.3.3 1.7 1.6-.4 2.3 2-1.1 2 1.1-.4-2.3 1.7-1.6-2.3-.3z',
+thumbup:'M8.8 21H5.4A1.4 1.4 0 0 1 4 19.6v-8.2a1.4 1.4 0 0 1 1.4-1.4h3.4zm1.6 0V9.3L14.3 2c1.7 0 2.8 1.4 2.4 3l-.7 3.4h4.1a2 2 0 0 1 2 2.4l-1.7 8.2a2 2 0 0 1-2 1.6z',
+thumbdown:'M8.8 3H5.4A1.4 1.4 0 0 0 4 4.4v8.2A1.4 1.4 0 0 0 5.4 14h3.4zm1.6 0v11.7L14.3 22c1.7 0 2.8-1.4 2.4-3l-.7-3.4h4.1a2 2 0 0 0 2-2.4l-1.7-8.2A2 2 0 0 0 18.4 3z',
+leaf:'M20.5 2.6c.6 8.4-3.2 14.4-9.6 14.4-1.5 0-2.8-.3-3.9-.9-1.2 1.4-2 3.1-2.5 5.4l-2-.4c.7-3.3 2-5.7 3.9-7.5C8.7 11 12.4 9.6 16 9.3c-4 .1-7.6 1-10.6 3C4.2 8.4 8 5 12.5 4.2c2.6-.5 5.3-.7 8-1.6z',
+check:'S:<path d="M4.2 12.6 9.6 18 20 6.3"/>',
+close:'S:<path d="M6 6l12 12M18 6 6 18"/>',
+lock:'S:<rect x="4.6" y="10" width="14.8" height="11" rx="2.6"/><path d="M8 10V7.2a4 4 0 0 1 8 0V10"/>',
+refresh:'S:<path d="M20.3 12a8.3 8.3 0 1 1-2.7-6.1"/><path d="M20.4 3.4v4.8h-4.8"/>',
+gear:'S:<circle cx="12" cy="12" r="3.3"/><path d="M12 2.4V5M12 19v2.6M21.6 12H19M5 12H2.4M18.8 5.2l-1.8 1.8M7 17l-1.8 1.8M18.8 18.8 17 17M7 7 5.2 5.2"/>',
+book:'S:<path d="M4 4.6A2.6 2.6 0 0 1 6.6 2H20v15.4H6.6A2.6 2.6 0 0 0 4 20V4.6z"/><path d="M20 17.4V22H6.6A2.6 2.6 0 0 1 4 19.4"/><path d="M8 6.8h7M8 10.2h7"/>',
+trophy:'S:<path d="M7 2.6h10v6.6a5 5 0 0 1-10 0V2.6z"/><path d="M7 4.8H3.8v1.8a4 4 0 0 0 3.2 3.9M17 4.8h3.2v1.8a4 4 0 0 1-3.2 3.9"/><path d="M12 14.2v3.6M8.2 21.4h7.6l-1-3.6H9.2z"/>',
+floppy:'S:<path d="M4 4.6A1.6 1.6 0 0 1 5.6 3h10.8L21 7.6v11.8A1.6 1.6 0 0 1 19.4 21H5.6A1.6 1.6 0 0 1 4 19.4z"/><path d="M8 3v6h8V3M7.4 21v-6.4h9.2V21"/>',
+folder:'S:<path d="M3 6.6A1.6 1.6 0 0 1 4.6 5h4L11 7.6h8.4A1.6 1.6 0 0 1 21 9.2v9.2A1.6 1.6 0 0 1 19.4 20H4.6A1.6 1.6 0 0 1 3 18.4z"/>',
+speaker:'S:<path d="M4 9.4h3.6L12 5.4v13.2l-4.4-4H4z"/><path d="M15.8 8.6a4.8 4.8 0 0 1 0 6.8M18.7 5.8a8.8 8.8 0 0 1 0 12.4"/>',
+clock:'S:<circle cx="12" cy="12" r="9"/><path d="M12 6.6V12l3.6 2.2"/>',
+mic:'S:<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5.6 11a6.4 6.4 0 0 0 12.8 0M12 17.4V21M8.6 21h6.8"/>',
+bulb:'S:<path d="M9 17.4a6.6 6.6 0 1 1 6 0V19H9z"/><path d="M9.6 21.6h4.8"/>',
+snow:'S:<path d="M12 2.4v19.2M3.7 7.2l16.6 9.6M20.3 7.2 3.7 16.8M12 6.4 9.4 9M12 6.4 14.6 9M12 17.6 9.4 15M12 17.6l14.6 15"/>',
+ban:'S:<circle cx="12" cy="12" r="8.8"/><path d="M5.8 5.8l12.4 12.4"/>',
+dot:'S:<circle cx="12" cy="12" r="6.4"/>',
+wave:'S:<path d="M9 11.4V4.6a1.6 1.6 0 1 1 3.2 0V10"/><path d="M12.2 9.2a1.6 1.6 0 1 1 3.2 0v1.8"/><path d="M15.4 10.4a1.6 1.6 0 1 1 3.2 0V14c0 4.2-2.7 7-6.6 7s-6.6-2.8-6.6-7v-2.6a1.6 1.6 0 1 1 3.2 0"/>',
+palette:'S:<path d="M12 21a9 9 0 1 1 9-9c0 2.1-1.7 3.2-3.4 3.2h-1.8a2.1 2.1 0 0 0-1.5 3.6c.5.6.2 2.2-2.3 2.2z"/><circle cx="7.4" cy="12.4" r="1.25" fill="currentColor" stroke="none"/><circle cx="9.4" cy="8.2" r="1.25" fill="currentColor" stroke="none"/><circle cx="14.2" cy="7.6" r="1.25" fill="currentColor" stroke="none"/>',
+family:'S:<circle cx="8" cy="6.8" r="3"/><circle cx="17.2" cy="8.6" r="2.4"/><path d="M2.6 20.4v-1.8A5.4 5.4 0 0 1 8 13.2a5.4 5.4 0 0 1 5.4 5.4v1.8M15 20.4v-1.2a4 4 0 0 1 6.4-3.2"/>',
+cat:'S:<path d="M5.2 9 4 3.4 8.8 6.2M18.8 9 20 3.4 15.2 6.2"/><path d="M4 12.6a8 8 0 0 1 16 0c0 4.6-3.6 7.8-8 7.8s-8-3.2-8-7.8z"/><path d="M9.2 12v1.2M14.8 12v1.2M12 15.6l-1.4 1.2M12 15.6l1.4 1.2"/>',
+pizza:'S:<path d="M3 20.6 12 3.4l9 17.2z"/><circle cx="12" cy="11.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="9.4" cy="16.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.6" cy="16.4" r="1.1" fill="currentColor" stroke="none"/>',
+backpack:'S:<path d="M6 9.4a6 6 0 0 1 12 0V20a1.6 1.6 0 0 1-1.6 1.6H7.6A1.6 1.6 0 0 1 6 20z"/><path d="M9.4 8.4V6.2a2.6 2.6 0 0 1 5.2 0v2.2M9 14.4h6"/>',
+house:'S:<path d="M3.4 10.6 12 3.4l8.6 7.2"/><path d="M5.6 9.8v10.8h12.8V9.8"/><path d="M9.8 20.6v-5.2h4.4v5.2"/>',
+face:'S:<circle cx="12" cy="12" r="9"/><path d="M8.6 10v1.2M15.4 10v1.2M8 14.8a5 5 0 0 0 8 0"/>',
+weather:'S:<path d="M7.2 16.2a4.6 4.6 0 0 1 .6-9.1 6.1 6.1 0 0 1 11.4 2A4 4 0 0 1 18.2 16.2z"/><path d="M8.6 19l-1 2.6M13 19l-1 2.6M17.4 19l-1 2.6"/>',
+run:'S:<circle cx="15.4" cy="4.4" r="2.2"/><path d="M8 21.4l3.2-5.4 3 2 .6 3.4M4.6 12.2l4.2-3.2 3.6 1 2.6 3.6 3.6 1"/>',
+bus:'S:<rect x="3.6" y="3.8" width="16.8" height="12.6" rx="2.6"/><path d="M3.6 11h16.8M7.2 19.8v1.8M16.8 19.8v1.8"/><circle cx="7.6" cy="16.6" r="1.4" fill="currentColor" stroke="none"/><circle cx="16.4" cy="16.6" r="1.4" fill="currentColor" stroke="none"/>',
+calendar:'S:<rect x="3.4" y="5" width="17.2" height="16" rx="2.6"/><path d="M3.4 10.2h17.2M8 2.8v4.2M16 2.8v4.2"/><circle cx="8.4" cy="14.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="14.6" r="1.2" fill="currentColor" stroke="none"/>',
+cube:'S:<path d="M12 2.6 20.8 7v10L12 21.4 3.2 17V7z"/><path d="M3.2 7 12 11.4 20.8 7M12 11.4v10"/>',
+gamepad:'S:<path d="M7.6 8h8.8a5.6 5.6 0 0 1 5.6 5.6A4.4 4.4 0 0 1 17.6 18c-1.7 0-2.5-1.1-3.4-2.2H9.8C8.9 16.9 8.1 18 6.4 18A4.4 4.4 0 0 1 2 13.6 5.6 5.6 0 0 1 7.6 8z"/><path d="M6.6 11.4v3M5.1 12.9h3"/><circle cx="16.4" cy="12.2" r="1.1" fill="currentColor" stroke="none"/><circle cx="18.4" cy="14.4" r="1.1" fill="currentColor" stroke="none"/>',
+music:'S:<path d="M9.2 18V5.2l10.6-2.2v12.4"/><circle cx="6.2" cy="18" r="3"/><circle cx="16.8" cy="15.4" r="3"/>',
+masks:'S:<path d="M4 3.8h16v7.4a8 8 0 0 1-16 0z"/><path d="M8.4 8.2h1.4M14.2 8.2h1.4M9 13.4a4 4 0 0 0 6 0"/>',
+pen:'S:<path d="M4 20l1-4.2L16.2 4.6a2.2 2.2 0 0 1 3.2 3.2L8.2 19z"/><path d="M14.6 6.2l3.2 3.2"/>',
+globe:'S:<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/>',
+rocket:'S:<path d="M12 2.4c3.6 2.6 5.4 6.6 5.4 11.2L12 18l-5.4-4.4C6.6 9 8.4 5 12 2.4z"/><circle cx="12" cy="9.6" r="2"/><path d="M8.4 16 5.6 21.4l4.4-1.8M15.6 16l2.8 5.4-4.4-1.8"/>',
+sun:'S:<circle cx="12" cy="12" r="4.6"/><path d="M12 2.4v2.4M12 19.2v2.4M21.6 12h-2.4M4.8 12H2.4M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7M18.8 18.8l-1.7-1.7M6.9 6.9 5.2 5.2"/>',
+brain:'S:<path d="M12 4.2a3.4 3.4 0 0 0-6.3 1.6 3.2 3.2 0 0 0-1.5 5.4A3.4 3.4 0 0 0 6 17a3.2 3.2 0 0 0 6 .6z"/><path d="M12 4.2a3.4 3.4 0 0 1 6.3 1.6 3.2 3.2 0 0 1 1.5 5.4A3.4 3.4 0 0 1 18 17a3.2 3.2 0 0 1-6 .6z"/>',
+headset:'S:<path d="M4.4 14.6v-2.4a7.6 7.6 0 0 1 15.2 0v2.4"/><rect x="2.6" y="13.6" width="4" height="6.4" rx="2"/><rect x="17.4" y="13.6" width="4" height="6.4" rx="2"/>',
+books:'S:<path d="M4.4 5.4h4v15h-4zM10 4.6h4v15.8h-4z"/><path d="M15.8 6.4l3.8 1-3.6 14.4-3.8-1z"/>',
+burst:'M12 1.6l2.4 5.6 5.6-2.4-2.4 5.6 5.6 2.4-5.6 2.4 2.4 5.6-5.6-2.4L12 22.4l-2.4-5.6-5.6 2.4 2.4-5.6L.8 11.2l5.6-2.4L4 3.2l5.6 2.4z',
+hundred:'S:<path d="M4.4 8.6v6.8M8.6 9.4a2.2 2.2 0 0 1 4.4 0v5.2a2.2 2.2 0 0 1-4.4 0zM15.6 9.4a2.2 2.2 0 0 1 4.4 0v5.2a2.2 2.2 0 0 1-4.4 0z"/>'
+};
+function ic(name,size,cls){
+  var p=ICONS[name]; if(!p)return '';
+  var stroke=(p.indexOf('S:')===0);
+  if(stroke)p=p.slice(2); else p='<path d="'+p+'"/>';
+  return '<svg class="ic'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" width="'+(size||18)+'" height="'+(size||18)+'" '+
+    (stroke?'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
+           :'fill="currentColor"')+' aria-hidden="true">'+p+'</svg>';
+}
+function icEl(name,size,cls){ var d=el('span'); d.innerHTML=ic(name,size,cls); return d.firstChild }
+
 
 /* ===================== helpers ===================== */
 var $=function(s,r){return (r||document).querySelector(s)};
@@ -749,6 +828,16 @@ function addSay(qs){
   if(!pick)return qs;
   return qs.concat([{t:'say',es:pick.es,en:pick.en,u:pick.u,topic:pick.topic,d:pick.d}]);
 }
+function dedupeWords(list){
+  var seen={}, out=[];
+  for(var i=0;i<list.length;i++){
+    var q=list[i];
+    var k=norm(q.es||q.a||(q.pairs&&q.pairs.length?q.pairs[0][0]:'')||('#'+i));
+    if(seen[k])continue;
+    seen[k]=1; out.push(q);
+  }
+  return out;
+}
 function spread(list){
   var out=[],pool=list.slice(),last='';
   while(pool.length){
@@ -762,11 +851,11 @@ function lessonQs(u,l){
   var pool=(byUnit[u]||[]).filter(usable);
   if(!pool.length)return [];
   var sorted=pool.slice().sort(function(a,b){return (a.d||2)-(b.d||2) || a._i-b._i});
-  if(l>LPU) return addSay(shuffle(sorted).slice(0,BOSSQ));
+  if(l>LPU) return addSay(dedupeWords(shuffle(sorted)).slice(0,BOSSQ));
   var per=Math.max(QPL,Math.floor(sorted.length/LPU));
   var start=Math.min((l-1)*per, Math.max(0,sorted.length-QPL));
-  var chunk=sorted.slice(start,start+per);
-  if(chunk.length<QPL) chunk=chunk.concat(sorted.slice(0,QPL-chunk.length));
+  var chunk=dedupeWords(sorted.slice(start,start+per));
+  if(chunk.length<QPL) chunk=dedupeWords(chunk.concat(sorted));
   return addSay(spread(sshuffle(chunk,u*211+l*17)).slice(0,QPL));
 }
 
@@ -876,25 +965,25 @@ var shownXP=0;
 function drawBar(){
   var b=$('#bar'); b.innerHTML='';
   if(L){
-    var x=el('button','iconbtn','✕'); x.title='Pause'; x.setAttribute('aria-label','Pause the lesson');
+    var x=el('button','iconbtn'); x.innerHTML=ic('close',18); x.title='Pause'; x.setAttribute('aria-label','Pause the lesson');
     x.onclick=function(){ SFX.tap(); quitLesson() };
     b.appendChild(x);
     var pb=el('div','pbar'), fi=el('i');
     fi.style.width=Math.round(100*L.done/Math.max(1,L.total))+'%';
     pb.appendChild(fi); b.appendChild(pb);
-    if(L.practice){ var rc=el('div','chip cyan'); rc.innerHTML='\u{1F501} <b>Repaso</b>'; b.appendChild(rc) }
+    if(L.practice){ var rc=el('div','chip cyan'); rc.innerHTML=ic('refresh',15)+'<b>Repaso</b>'; b.appendChild(rc) }
     else{
       var h=el('div','hearts');
-      for(var i=0;i<5;i++)h.appendChild(el('span','heart'+(i<L.hearts?'':' gone'),'❤️'));
+      for(var i=0;i<5;i++){ var hv=el('span','heart'+(i<L.hearts?'':' gone')); hv.innerHTML=ic('heart',18); h.appendChild(hv) }
       b.appendChild(h);
     }
     return;
   }
   var lv=levelOf(S.xp);
-  var lvc=el('div','chip gold'); lvc.innerHTML='\u{1F3C5} <b>'+esc(RANKS[lv-1])+'</b>'; b.appendChild(lvc);
-  var st=el('div','chip pink'); st.innerHTML='\u{1F525} <b>'+S.streak+'</b>'; b.appendChild(st);
-  var fi2=el('div','chip cyan'); fi2.id='fishchip'; fi2.innerHTML='\u{1F41F} <b>'+S.fish+'</b>'; b.appendChild(fi2);
-  var xc=el('div','chip gold'); xc.id='xpchip'; xc.innerHTML='⚡ <b>'+S.xp+'</b>'; b.appendChild(xc);
+  var lvc=el('div','chip gold'); lvc.innerHTML=ic('medal',16)+'<b>'+esc(RANKS[lv-1])+'</b>'; b.appendChild(lvc);
+  var st=el('div','chip pink'); st.innerHTML=ic('flame',16)+'<b>'+S.streak+'</b>'; b.appendChild(st);
+  var fi2=el('div','chip cyan'); fi2.id='fishchip'; fi2.innerHTML=ic('fish',16)+'<b>'+S.fish+'</b>'; b.appendChild(fi2);
+  var xc=el('div','chip gold'); xc.id='xpchip'; xc.innerHTML=ic('bolt',16)+'<b>'+S.xp+'</b>'; b.appendChild(xc);
   b.appendChild(el('div','spacer'));
   var pct=Math.min(1,S.dxp/Math.max(1,S.goal));
   var ring=el('div','ring');
@@ -924,9 +1013,10 @@ function cat(size,mood){
   if(S.hat){
     var h=HATS.filter(function(x){return x.id===S.hat})[0];
     if(h){
-      var e=el('div','hat',h.e);
-      e.style.fontSize=(size==='lg'?54:size==='sm'?24:36)+'px';
-      e.style.top=(size==='sm'?'-10%':'-8%');
+      var e=el('div','hat');
+      e.innerHTML='<svg viewBox="0 0 100 60" width="100%" height="100%">'+h.svg+'</svg>';
+      e.style.width=(size==='lg'?112:size==='sm'?50:76)+'px';
+      e.style.top=(size==='sm'?'-14%':'-12%');
       w.appendChild(e);
     }
   }
@@ -949,7 +1039,11 @@ function modal(opts){
     var cw=cat('lg',opts.catMood||'happy'); cw.style.margin='0 auto 6px'; box.appendChild(cw);
     if(opts.catAnim&&!reduced)setTimeout(function(){ setMood(box,opts.catMood||'happy',opts.catAnim) },80);
   }
-  if(opts.emoji){ var e=el('div',null,opts.emoji); e.style.cssText='font-size:62px;line-height:1'; box.appendChild(e) }
+  if(opts.ico){
+    var iw=el('div');
+    iw.style.cssText='display:flex;justify-content:center;margin-bottom:6px;color:'+(opts.icoCol||'var(--gold)');
+    iw.innerHTML=ic(opts.ico,58); box.appendChild(iw);
+  } else if(opts.emoji){ var e=el('div',null,opts.emoji); e.style.cssText='font-size:62px;line-height:1'; box.appendChild(e) }
   box.appendChild(el('h2',null,opts.title||''));
   if(opts.text){ var p=el('p'); p.innerHTML=opts.text; box.appendChild(p) }
   var bts=el('div','mbtns');
@@ -1021,7 +1115,7 @@ function hello(){
     if(!o){ toast('That code does not look right',1); return }
     S=o; saveNow(); lastLevel=levelOf(S.xp); SFX.chest(); confetti(30); toast('✓ Welcome back!'); home();
   };
-  var fb2=el('button','btn sm','📂 From a file');
+  var fb2=el('button','btn sm'); fb2.innerHTML=ic('folder',15)+'<span>From a file</span>';
   fb2.onclick=function(){ SFX.tap(); restoreFromFile() };
   rrow.appendChild(rb); rrow.appendChild(fb2); rc.appendChild(rrow);
   s.appendChild(rc);
@@ -1043,12 +1137,12 @@ function warnBanner(){
 function backupNudge(){
   var w=el('div','card');
   w.style.cssText='border:1px solid var(--gold);background:rgba(255,201,60,.1);box-shadow:0 0 30px rgba(255,201,60,.14)';
-  w.innerHTML='<b style="font-family:var(--fd);font-size:18px;color:var(--gold)">\u{1F4BE} Weekly backup</b>'+
+  w.innerHTML='<b style="font-family:var(--fd);font-size:18px;color:var(--gold);display:flex;align-items:center;gap:8px">'+ic('floppy',19)+'<span>Weekly backup</span></b>'+
     '<div style="font-size:13px;color:var(--ink2);margin-top:5px">'+
     (S.bk?('Last saved '+backupAge()+' days ago. '):'You have not saved a backup yet. ')+
     'One tap puts your '+S.xp+' XP, your '+wordCount()+' words and your streak into a file on this phone.</div>';
   var row=el('div'); row.style.cssText='display:flex;gap:9px;margin-top:12px;flex-wrap:wrap';
-  var b=el('button','btn sm gold','\u{1F4BE} Save it now');
+  var b=el('button','btn sm gold'); b.innerHTML=ic('floppy',15)+'<span>Save it now</span>';
   b.onclick=function(){ SFX.tap(); saveBackupFile(b) };
   var later=el('button','btn sm ghost','Not today');
   later.onclick=function(){ S.snz=today(); saveNow(); w.remove() };
@@ -1073,9 +1167,16 @@ function home(){
   hero.appendChild(bb); s.appendChild(hero);
 
   var q=el('div','quickrow');
-  if(nx){ var cb=el('button','btn gold','▶ Continue'); cb.onclick=function(){ SFX.tap(); startLesson(nx.u,nx.l) }; q.appendChild(cb) }
-  [['\u{1F501} Repaso',startPractice],['\u{1F4D4} '+wordCount(),words],['\u{1F3C5} Badges',badges],['\u{1F41F} Shop',shop],['⚙️',settings]]
-  .forEach(function(o){ var b=el('button','btn sm',o[0]); b.onclick=function(){ SFX.tap(); o[1]() }; q.appendChild(b) });
+  if(nx){ var cb=el('button','btn gold'); cb.innerHTML=ic('play',16)+'<span>Continue</span>';
+    cb.onclick=function(){ SFX.tap(); startLesson(nx.u,nx.l) }; q.appendChild(cb) }
+  [['refresh','Repaso',startPractice],['book',String(wordCount()),words],['trophy','Badges',badges],
+   ['fish','Shop',shop],['gear','',settings]]
+  .forEach(function(o){
+    var b=el('button','btn sm');
+    b.innerHTML=ic(o[0],16)+(o[1]?'<span>'+esc(o[1])+'</span>':'');
+    if(!o[1])b.title='Settings';
+    b.onclick=function(){ SFX.tap(); o[2]() }; q.appendChild(b);
+  });
   s.appendChild(q);
 
   var lvl=levelOf(S.xp), into=S.xp-levelFloor(lvl);
@@ -1107,13 +1208,15 @@ function home(){
     var open=unitOpen(U.n);
     var box=el('section','world'); box.style.setProperty('--uc',U.c);
     var h=el('div','worldhead');
-    h.appendChild(el('div','badge',open?U.e:'\u{1F512}'));
+    var bdg=el('div','badge'); bdg.style.color=U.c;
+    bdg.innerHTML=ic(open?U.ico:'lock',open?27:22); h.appendChild(bdg);
     var g=el('div'); g.style.flex='1';
     g.appendChild(el('span','num','Unit '+U.n));
     g.appendChild(el('h2',null,U.t));
     g.appendChild(el('p',null,open?U.s:'Finish unit '+(U.n-1)+' to open this one'));
     h.appendChild(g);
-    h.appendChild(el('div','crowns','\u{1F451} '+unitCrowns(U.n)+'/'+((LPU+1)*2)));
+    var cw=el('div','crowns'); cw.innerHTML=ic('crown',14)+'<span>'+unitCrowns(U.n)+'/'+((LPU+1)*2)+'</span>';
+    h.appendChild(cw);
     box.appendChild(h);
     if(open){
       var path=el('div','path');
@@ -1124,10 +1227,10 @@ function home(){
         var done=isDone(U.n,l), op=unlocked(U.n,l)&&!done;
         var b=el('button','node'+(boss?' boss':'')+(done?' done':(op?' open':' locked')));
         b.type='button';
-        b.innerHTML=done?(boss?'\u{1F451}':'✓'):(op?(boss?'\u{1F451}':String(l)):'\u{1F512}');
+        b.innerHTML=done?(boss?ic('crown',30):ic('check',26)):(op?(boss?ic('crown',30):String(l)):ic('lock',20));
         b.setAttribute('aria-label',(boss?"Sombra's Challenge":'Lesson '+l)+' of unit '+U.n);
         var cr=crowns(U.n,l);
-        if(cr)b.appendChild(el('span','cr','\u{1F451}'.repeat(cr)));
+        if(cr){ var crn=el('span','cr'); var h2=''; for(var ci=0;ci<cr;ci++)h2+=ic('crown',10); crn.innerHTML=h2; b.appendChild(crn) }
         if(unlocked(U.n,l))b.onclick=(function(u,ll){return function(){ SFX.tap(); startLesson(u,ll) }})(U.n,l);
         else b.disabled=true;
         row.appendChild(b);
@@ -1162,7 +1265,7 @@ function startLesson(u,l){
   var qs=lessonQs(u,l);
   if(!qs.length){ toast('No questions there yet',1); return }
   L={u:u,l:l,boss:(l>LPU),practice:false,q:qs.map(function(x){return {q:x,retry:false}}),
-     i:0,done:0,total:qs.length,hearts:5,ok:0,bad:0,combo:0,bcombo:0,xp:0};
+     i:0,done:0,total:qs.length,hearts:5,ok:0,bad:0,combo:0,bcombo:0,xp:0,retries:0};
   phase='answer'; runQ();
 }
 function startPractice(){
@@ -1177,10 +1280,10 @@ function startPractice(){
     var any=ALL.filter(function(q){ return usable(q)&&unitOpen(q.u) });
     pool=pool.concat(shuffle(any).slice(0,QPL-pool.length));
   }
-  pool=addSay(spread(shuffle(pool)).slice(0,QPL));
+  pool=addSay(spread(dedupeWords(shuffle(pool))).slice(0,QPL));
   if(!pool.length){ toast('Play a lesson first',1); return }
   L={u:0,l:0,boss:false,practice:true,q:pool.map(function(x){return {q:x,retry:false}}),
-     i:0,done:0,total:pool.length,hearts:5,ok:0,bad:0,combo:0,bcombo:0,xp:0};
+     i:0,done:0,total:pool.length,hearts:5,ok:0,bad:0,combo:0,bcombo:0,xp:0,retries:0};
   phase='answer'; runQ();
 }
 function quitLesson(){
@@ -1188,7 +1291,7 @@ function quitLesson(){
   flush();
   var earned=L.xp, answered=L.done;
   modal({
-    emoji:answered?'\u{1F4BE}':'\u{1F43E}',
+    ico:answered?'floppy':'paw', icoCol:answered?'var(--lime)':'var(--gold)',
     title:answered?'Saved!':'Leave already?',
     text:answered
       ? 'Your <b>'+earned+' XP</b> and every word from '+(answered===1?'that question is':'those '+answered+' questions are')+' stored on this phone. Only the rest of this lesson gets dropped.'
@@ -1216,7 +1319,7 @@ function runQ(){
   s.appendChild(card);
   cur=RENDER[q.t]?RENDER[q.t](q,body):RENDER.mc(q,body);
   var cb=el('div','combobox'+(L.combo>=2?' on':'')+(L.combo>=5?' hot':''));
-  cb.innerHTML='<span class="combolabel">'+(L.combo>=5?'\u{1F525} ':'')+'Combo x'+L.combo+'</span>'+
+  cb.innerHTML='<span class="combolabel">'+(L.combo>=5?ic('flame',15):'')+'<span>Combo x'+L.combo+'</span></span>'+
     '<div class="combometer"><i style="width:'+Math.min(100,L.combo*10)+'%"></i></div>';
   card.appendChild(cb);
   show('lesson'); footer();
@@ -1272,7 +1375,8 @@ function optionList(q,box,opts,cls,onPick){
 function hearBtn(box,text){
   if(!text)return;
   var r=el('div'); r.style.cssText='text-align:center;margin-top:14px';
-  var b=el('button','btn ghost sm','\u{1F50A} Hear «'+text+'»');
+  var b=el('button','btn ghost sm');
+  b.innerHTML=ic('speaker',15)+'<span>Hear «'+esc(text)+'»</span>';
   b.onclick=function(){ say(text) }; r.appendChild(b); box.appendChild(r);
 }
 function mkChoice(q,box,cls){
@@ -1286,13 +1390,14 @@ RENDER.mc=function(q,box){ return mkChoice(q,box,null) };
 RENDER.emoji=function(q,box){ return mkChoice(q,box,'grid') };
 RENDER.listen=function(q,box){
   var big=el('button','speakbig'); big.type='button';
-  big.innerHTML='\u{1F50A}';
+  big.innerHTML=ic('speaker',46);
   var w=el('div','wave'); for(var i=0;i<5;i++)w.appendChild(el('i'));
   big.appendChild(w); big.appendChild(el('small',null,'TAP TO HEAR IT AGAIN'));
   big.onclick=function(){ say(q.es) };
   box.appendChild(big);
   var slow=el('div'); slow.style.cssText='text-align:center;margin:12px 0 16px';
-  var sb=el('button','btn ghost sm','\u{1F422} Slowly'); sb.onclick=function(){ say(q.es,.5) };
+  var sb=el('button','btn ghost sm'); sb.innerHTML=ic('clock',15)+'<span>Slowly</span>';
+  sb.onclick=function(){ say(q.es,.5) };
   slow.appendChild(sb); box.appendChild(slow);
   var o=optionList(q,box,shuffle(q.opts||[]));
   return {ready:function(){return !!o.get()}, check:function(){return o.get()===q.a},
@@ -1301,8 +1406,8 @@ RENDER.listen=function(q,box){
 };
 RENDER.tf=function(q,box){
   var o=optionList(q,box,['True','False'],'tfrow');
-  o.nodes[0].textContent='\u{1F44D} True'; o.nodes[0].dataset.v='True';
-  o.nodes[1].textContent='\u{1F44E} False'; o.nodes[1].dataset.v='False';
+  o.nodes[0].innerHTML=ic('thumbup',22)+'<span>True</span>'; o.nodes[0].dataset.v='True';
+  o.nodes[1].innerHTML=ic('thumbdown',22)+'<span>False</span>'; o.nodes[1].dataset.v='False';
   hearBtn(box,q.es);
   return {ready:function(){return !!o.get()}, check:function(){return o.get()===q.a},
     reveal:function(){o.reveal(q.a)}, hint:function(){return o.hint(q.a)},
@@ -1437,12 +1542,14 @@ RENDER.say=function(q,box){
   box.appendChild(card);
   if(q.en)box.appendChild(el('div','hintline','It means: '+q.en));
   var row=el('div'); row.style.cssText='display:flex;gap:10px;margin-top:16px;justify-content:center;flex-wrap:wrap';
-  var hear=el('button','btn','\u{1F50A} Hear Sombra'); hear.onclick=function(){ say(q.es) };
-  var slow=el('button','btn ghost','\u{1F422} Slowly'); slow.onclick=function(){ say(q.es,.5) };
+  var hear=el('button','btn'); hear.innerHTML=ic('speaker',17)+'<span>Hear Sombra</span>';
+  hear.onclick=function(){ say(q.es) };
+  var slow=el('button','btn ghost'); slow.innerHTML=ic('clock',17)+'<span>Slowly</span>';
+  slow.onclick=function(){ say(q.es,.5) };
   row.appendChild(hear); row.appendChild(slow); box.appendChild(row);
   var mic=el('div','card'); mic.style.cssText='margin-top:18px;text-align:center';
-  mic.innerHTML='<div style="font-size:38px">\u{1F3A4}</div>'+
-    '<b style="font-family:var(--fd);font-size:19px;display:block;margin-top:2px">Now you say it out loud</b>'+
+  mic.innerHTML='<div style="color:var(--cyan);display:flex;justify-content:center">'+ic('mic',40)+'</div>'+
+    '<b style="font-family:var(--fd);font-size:19px;display:block;margin-top:6px">Now you say it out loud</b>'+
     '<div style="font-size:13px;color:var(--muted);margin-top:5px">I cannot hear you through the screen, so this one is on your honour. Listen first, then copy the sounds.</div>';
   var done=el('button','btn go wide','✓ I said it'); done.style.marginTop='14px';
   done.onclick=function(){ said=true; SFX.coin(); burstAt(done,['#FFC93C','#4FEE9B'],14);
@@ -1458,7 +1565,7 @@ function footer(){
   var f=$('#foot'), inner=$('#footinner'); f.hidden=false; inner.innerHTML='';
   if(phase==='answer'){
     if(L&&!L.practice&&S.items.hint>0&&cur&&cur.hint){
-      var hb=el('button','btn sm ghost','\u{1F4A1} '+S.items.hint); hb.title='Use a hint';
+      var hb=el('button','btn sm ghost'); hb.innerHTML=ic('bulb',15)+'<span>'+S.items.hint+'</span>'; hb.title='Use a hint';
       hb.onclick=function(){ if(cur.hint()){ SFX.tap(); S.items.hint--; save(); footer() } };
       inner.appendChild(hb);
     }
@@ -1508,7 +1615,7 @@ function doCheck(){
       L.hearts--;
     }
     learn(q,false); addMiss(q);
-    if(!item.retry&&L.q.length<L.total+6){ L.q.push({q:q,retry:true}); L.total++ }
+    if(!item.retry&&L.retries<2){ L.q.push({q:q,retry:true}); L.total++; L.retries++ }
     SFX.wrong(); haptic([18,40,18]); screenShake();
     fb.appendChild(el('h3',null,'Not quite — look again'));
     var p2=el('p'); p2.innerHTML=answerLine(q,true); fb.appendChild(p2);
@@ -1561,7 +1668,7 @@ function outOfHearts(){
   phase='answer';
   var u=L.u,l=L.l,practice=L.practice,earned=L.xp;
   flush();
-  modal({emoji:'\u{1F634}', title:'Sombra needs a nap', dismiss:false,
+  modal({ico:'cat', icoCol:'var(--muted)', title:'Sombra needs a nap', dismiss:false,
     text:'Out of hearts. Your <b>'+earned+' XP</b> are already saved — nothing is lost. Go again?',
     buttons:[
       {label:'Try again', cls:'go', fn:function(){ if(practice)startPractice(); else startLesson(u,l) }},
@@ -1634,7 +1741,7 @@ function stat(cls,big,lab){ var d=el('div','stat '+cls); d.appendChild(el('b',nu
 function showBadgeModal(list){
   if($('#modal').hidden===false)return;
   var b=list[0];
-  modal({emoji:b.e, rays:true, title:'Badge unlocked',
+  modal({ico:b.ico, icoCol:b.col, rays:true, title:'Badge unlocked',
     text:'<b>'+esc(b.t)+'</b><br>'+esc(b.d)+(list.length>1?'<br><br>and '+(list.length-1)+' more':''),
     buttons:[{label:'Nice', cls:'gold', fn:function(){}}]});
   SFX.level(); confetti(30);
@@ -1696,8 +1803,10 @@ function words(){
         var w=S.words[k], r=el('div','row'), g=el('div','g');
         g.innerHTML='<b class="es">'+esc(k)+'</b><span>'+esc(w.en||'')+'</span>';
         r.appendChild(g);
-        r.appendChild(el('div',null,'\u{1F343}'.repeat(w.s||0)+'⚪'.repeat(3-(w.s||0))));
-        var b=el('button','iconbtn','\u{1F50A}'); b.onclick=function(){say(k)}; r.appendChild(b);
+        var lv=el('div','leaves'); var lh='';
+        for(var li=0;li<3;li++)lh+=ic(li<(w.s||0)?'leaf':'dot',15,li<(w.s||0)?'on':'off');
+        lv.innerHTML=lh; r.appendChild(lv);
+        var b=el('button','iconbtn'); b.innerHTML=ic('speaker',16); b.onclick=function(){say(k)}; r.appendChild(b);
         list.appendChild(r);
       });
       s.appendChild(list);
@@ -1716,7 +1825,7 @@ function badges(){
   var g=el('div','badges');
   BADGES.forEach(function(b){
     var d=el('div','bdg'+(S.badges[b.id]?' won':''));
-    d.innerHTML='<span class="e">'+b.e+'</span>';
+    d.innerHTML='<span class="e" style="color:'+(S.badges[b.id]?b.col:'var(--muted)')+'">'+ic(b.ico,32)+'</span>';
     d.appendChild(el('b',null,b.t));
     d.appendChild(el('span',null,S.badges[b.id]?'Earned '+S.badges[b.id]:b.d));
     g.appendChild(d);
@@ -1736,22 +1845,23 @@ function shop(){
   s.appendChild(backBtn());
   var h=el('div','hero'); h.appendChild(cat('','happy'));
   var bb=el('div','bubble');
-  bb.innerHTML='You have <b>\u{1F41F} '+S.fish+' fish</b>. Dress me up, or buy something useful.';
+  bb.innerHTML='You have <b>'+S.fish+' fish</b>. Dress me up, or buy something useful.';
   h.appendChild(bb); s.appendChild(h);
 
   s.appendChild(el('div','secttitle','Hats for Sombra'));
   var hats=el('div','hats');
   var none=el('div','hatcard'+(S.hat?'':' on'));
-  none.innerHTML='<span class="e">\u{1F6AB}</span>';
+  none.innerHTML='<span class="e" style="color:var(--muted)">'+ic('ban',32)+'</span>';
   none.appendChild(el('b',null,'No hat'));
   none.onclick=function(){ SFX.tap(); S.hat=''; saveNow(); shop() };
   hats.appendChild(none);
   HATS.forEach(function(H){
     var owned=S.hats.indexOf(H.id)>=0, on=(S.hat===H.id);
     var d=el('div','hatcard'+(on?' on':(owned?' owned':(S.fish<H.cost?' cant':''))));
-    d.innerHTML='<span class="e">'+H.e+'</span>';
+    d.innerHTML='<span class="e"><svg viewBox="0 0 100 60" width="56" height="34">'+H.svg+'</svg></span>';
     d.appendChild(el('b',null,H.t));
-    d.appendChild(el('small',null,owned?(on?'Wearing':'Tap to wear'):'\u{1F41F} '+H.cost));
+    var sm=el('small'); sm.innerHTML=owned?(on?'Wearing':'Tap to wear'):(ic('fish',12)+'<span>'+H.cost+'</span>');
+    sm.style.cssText='display:flex;align-items:center;justify-content:center;gap:4px'; d.appendChild(sm);
     d.onclick=function(){
       if(owned){ SFX.coin(); S.hat=on?'':H.id; saveNow(); shop(); return }
       if(S.fish<H.cost){ toast('Not enough fish yet',1); return }
@@ -1764,21 +1874,21 @@ function shop(){
   s.appendChild(hats);
 
   s.appendChild(el('div','secttitle','Power-ups'));
-  [{id:'hint',e:'\u{1F4A1}',t:'Hint',d:'Removes one wrong answer',cost:15},
-   {id:'freeze',e:'❄️',t:'Streak freeze',d:'Saves your streak if you miss a day',cost:30}]
+  [{id:'hint',ico:'bulb',col:'var(--gold)',t:'Hint',d:'Removes one wrong answer',cost:15},
+   {id:'freeze',ico:'snow',col:'var(--cyan)',t:'Streak freeze',d:'Saves your streak if you miss a day',cost:30}]
   .forEach(function(it){
     var r=el('div','row');
-    var e=el('div',null,it.e); e.style.fontSize='27px'; r.appendChild(e);
+    var e=el('div'); e.style.color=it.col; e.innerHTML=ic(it.ico,26); r.appendChild(e);
     var g=el('div','g'); g.innerHTML='<b>'+it.t+' · you have '+(S.items[it.id]||0)+'</b><span>'+it.d+'</span>';
     r.appendChild(g);
-    var b=el('button','btn sm gold','\u{1F41F} '+it.cost);
+    var b=el('button','btn sm gold'); b.innerHTML=ic('fish',15)+'<span>'+it.cost+'</span>';
     b.disabled=S.fish<it.cost;
     b.onclick=function(){ if(S.fish<it.cost)return; S.fish-=it.cost; S.items[it.id]=(S.items[it.id]||0)+1;
       saveNow(); SFX.coin(); shop(); toast('Bought: '+it.t) };
     r.appendChild(b);
     s.appendChild(r);
   });
-  var note=el('p',null,'A heart refill (\u{1F41F} 20) shows up right when you run out mid-lesson.');
+  var note=el('p',null,'A heart refill (20 fish) shows up right when you run out mid-lesson.');
   note.style.cssText='color:var(--muted);font-size:13px;margin-top:14px';
   s.appendChild(note);
   show('shop');
@@ -1811,15 +1921,15 @@ function blobDownload(){
   }catch(e){ return false }
 }
 function saveBackupFile(btn){
-  var old=btn.textContent; btn.textContent='Saving…'; btn.disabled=true;
+  var old=btn.innerHTML; btn.textContent='Saving…'; btn.disabled=true;
   function finish(ok){
-    btn.disabled=false; btn.textContent=old;
+    btn.disabled=false; btn.innerHTML=old;
     if(ok)markBackedUp(); else toast('Could not save a file here — use the code below',1);
   }
   getDL().then(function(d){
     if(d&&d.save){
       d.save({filename:backupName(),data:backupText()}).then(function(){ finish(true) },function(){
-        btn.disabled=false; btn.textContent=old; toast('Backup cancelled',1) });
+        btn.disabled=false; btn.innerHTML=old; toast('Backup cancelled',1) });
       return;
     }
     finish(blobDownload());
@@ -1875,7 +1985,7 @@ function settings(){
 
   var r2=el('div','row'); r2.style.marginTop='9px';
   var g2=el('div','g'); g2.innerHTML='<b>Speaking speed</b><span>'+S.settings.speed.toFixed(2)+'x</span>'; r2.appendChild(g2);
-  [['\u{1F422}',.6],['\u{1F6B6}',.85],['\u{1F407}',1]].forEach(function(o){
+  [['0.6×',.6],['0.85×',.85],['1×',1]].forEach(function(o){
     var b=el('button','btn sm'+(Math.abs(S.settings.speed-o[1])<.01?' gold':' ghost'),o[0]);
     b.onclick=function(){ S.settings.speed=o[1]; saveNow(); say('Hola, soy Sombra'); settings() };
     r2.appendChild(b);
@@ -1907,9 +2017,9 @@ function settings(){
   p.style.cssText='margin:0 0 13px;font-size:13px;color:var(--muted);line-height:1.6';
   c3.appendChild(p);
   var brow=el('div'); brow.style.cssText='display:flex;gap:9px;flex-wrap:wrap';
-  var bf=el('button','btn sm gold','\u{1F4BE} Save backup file');
+  var bf=el('button','btn sm gold'); bf.innerHTML=ic('floppy',15)+'<span>Save backup file</span>';
   bf.onclick=function(){ SFX.tap(); saveBackupFile(bf) };
-  var rf=el('button','btn sm','\u{1F4C2} Restore from file');
+  var rf=el('button','btn sm'); rf.innerHTML=ic('folder',15)+'<span>Restore from file</span>';
   rf.onclick=function(){ SFX.tap(); restoreFromFile() };
   brow.appendChild(bf); brow.appendChild(rf); c3.appendChild(brow);
   var p2=el('p',null,'If saving a file does not work here, copy this code and paste it into the same box on the other phone.');
@@ -1927,7 +2037,7 @@ function settings(){
   ld.onclick=function(){
     var o=parseBackup(ta.value);
     if(!o){ toast('That code does not look right',1); return }
-    modal({emoji:'⚠️', title:'Replace progress?',
+    modal({ico:'ban', icoCol:'var(--bad)', title:'Replace progress?',
       text:'This wipes what is on this phone and puts the pasted progress in its place.',
       buttons:[
         {label:'Yes, replace it', cls:'bad', fn:function(){ S=o; saveNow(); lastLevel=levelOf(S.xp); toast('Progress loaded'); home() }},
@@ -1952,7 +2062,7 @@ function settings(){
       try{ okL=!!localStorage.getItem(KEY) }catch(e){}
       idbGet().then(function(v){
         okI=!!v;
-        modal({emoji:(okL||okI)?'\u2705':'\u26A0\uFE0F',
+        modal({ico:(okL||okI)?'check':'ban', icoCol:(okL||okI)?'var(--lime)':'var(--bad)',
           title:(okL||okI)?'Saving works here':'Saving is blocked here',
           text:(okL||okI)
             ? 'I wrote your progress and read it straight back. Browser storage: '+(okL?'yes':'no')+'. Local database: '+(okI?'yes':'no')+'.'
@@ -1968,7 +2078,7 @@ function settings(){
   var c4=el('div','card');
   var rsb=el('button','btn sm bad','Erase all progress');
   rsb.onclick=function(){
-    modal({emoji:'\u{1F5D1}️', title:'Erase everything?',
+    modal({ico:'close', icoCol:'var(--bad)', title:'Erase everything?',
       text:'Every XP, word, badge and crown goes. This cannot be undone.',
       buttons:[
         {label:'Erase it all', cls:'bad', fn:function(){ wipeAll(function(){
