@@ -1551,7 +1551,7 @@ function runQ(){
     '<div class="combometer"><i style="width:'+Math.min(100,L.combo*10)+'%"></i></div>';
   card.appendChild(cb);
   show('lesson'); footer();
-  if(q.t==='listen')setTimeout(function(){ say(q.es) },280);
+  if(q.t==='listen')setTimeout(function(){ if(L)say(q.es) },280);
 }
 function tagFor(t){
   return {say:'Say it out loud',mc:'Choose the answer',emoji:'Tap the picture',listen:'Listen to Sombra',
@@ -1783,7 +1783,7 @@ RENDER.say=function(q,box){
   done.onclick=function(){ said=true; SFX.coin(); burstAt(done,['#FFC93C','#4FEE9B'],14);
     done.textContent='¡Bien dicho!'; done.disabled=true; footer() };
   mic.appendChild(done); box.appendChild(mic);
-  setTimeout(function(){ say(q.es) },320);
+  setTimeout(function(){ if(L)say(q.es) },320);
   return {ready:function(){return said}, check:function(){return true}, reveal:function(){},
     hint:function(){return false}, right:function(){return q.es}, okNode:function(){return done}};
 };
@@ -1863,7 +1863,7 @@ function doCheck(){
     if(hs2[keepHearts])hs2[keepHearts].classList.add('breaking');
   }
   footer(); save(); checkLevelUp();
-  if(!L.practice&&L.hearts<=0)setTimeout(outOfHearts,750);
+  if(!L.practice&&L.hearts<=0)setTimeout(function(){ if(L&&L.hearts<=0)outOfHearts() },750);
   fb.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
 function answerLine(q,wrong){
@@ -1897,6 +1897,7 @@ function checkLevelUp(){
   } else if(lv<lastLevel) lastLevel=lv;
 }
 function outOfHearts(){
+  if(!L)return;
   phase='answer';
   var u=L.u,l=L.l,practice=L.practice,earned=L.xp;
   flush();
